@@ -4,18 +4,44 @@
  * and open the template in the editor.
  */
 package janelas;
+import entidades.*;
+import java.awt.event.ItemEvent;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Gonosuke
  */
 public class CadastroUsuario extends javax.swing.JFrame {
-
+    private LinkedList<Usuario> listaUsuarios;
+    private Usuario user;
+    private boolean novo = false;
     /**
      * Creates new form CadastroUsuario
      */
     public CadastroUsuario() {
         initComponents();
+        this.listaUsuarios = listaUsuarios;
+        this.user = user;
+        
+        //Verifica se é administrador "1"
+        if(user.getNivel() == 1){
+            comboUsuario.setModel(new DefaultComboBoxModel(listaUsuarios.toArray()));
+            btNovo.setEnabled(true);
+        }else{
+            comboUsuario.addItem(user.toString());
+            btNovo.setEnabled(false);
+            nivel.setEnabled(false);
+        }
+        login.setEnabled(false);
+        comboUsuario.setSelectedItem(user);
+    }
+
+    CadastroUsuario(LinkedList<Usuario> listaUsuario, Usuario user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -56,6 +82,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jLabel5.setText("Nível");
 
+        comboUsuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboUsuarioItemStateChanged(evt);
+            }
+        });
         comboUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboUsuarioActionPerformed(evt);
@@ -125,8 +156,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
         );
 
         btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovoActionPerformed(evt);
+            }
+        });
 
         btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +202,67 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void comboUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboUsuarioActionPerformed
+
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+        // TODO add your handling code here:
+        novo = true;
+        btSalvar.setEnabled(true);
+        btNovo.setEnabled(false);
+        
+        login.setEnabled(true);
+        nivel.setEnabled(true);
+        
+        nome.setText("");
+        login.setText("");
+        senha.setText("");
+    }//GEN-LAST:event_btNovoActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        // TODO add your handling code here:
+        Usuario usuario = null;
+        //Verificando se o processo é para um novo usuário ou não
+        //Caso seja um novo devemos instanciar o usuário
+        //Caso contrario usaremos o usuário selecionado
+        if(novo){
+            usuario = new Usuario();
+            usuario.setLogin(login.getText());
+        }else{
+            usuario = (Usuario) comboUsuario.getSelectedItem();
+        }
+        
+        usuario.setNome(nome.getText());
+        usuario.setSenha(new String(senha.getPassword()));
+        usuario.setNivel(nivel.getSelectedItem().equals("Administrador")? 1: 2);
+        
+        if(novo){
+            listaUsuarios.add(usuario);
+            comboUsuario.addItem(usuario.toString());
+            comboUsuario.setSelectedItem(usuario);
+        }
+    }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void comboUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboUsuarioItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Usuario usuario = (Usuario)comboUsuario.getSelectedItem();
+            
+            nome.setText(usuario.getNome());
+            login.setText(usuario.getLogin());
+            senha.setText(usuario.getSenha());
+            nivel.setSelectedIndex(usuario.getNivel()-1);
+            
+            login.setEnabled(false);
+            
+            //Verifica se é administrador "1"
+            
+            if(user.getNivel() ==1 && !user.equals(usuario)){
+                nivel.setEnabled(true);
+                
+            }else{
+                nivel.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_comboUsuarioItemStateChanged
 
     /**
      * @param args the command line arguments
