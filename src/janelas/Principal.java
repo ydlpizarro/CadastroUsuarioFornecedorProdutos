@@ -56,7 +56,7 @@ public class Principal extends javax.swing.JFrame {
         numero = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        comboCliente = new javax.swing.JComboBox<>();
+        comboCliente = new javax.swing.JComboBox<Cliente>();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -269,14 +269,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,7 +329,7 @@ public class Principal extends javax.swing.JFrame {
 			listaClientes.add(cliente);
 
 			//Exibição de novo cliente no combo de seleção de cliente
-			comboCliente.addItem(cliente.toString());
+			comboCliente.addItem(cliente);
 
 			//Selecionar o item
 			comboCliente.setSelectedItem(cliente);
@@ -340,27 +340,22 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void comboClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboClienteItemStateChanged
-		// TODO add your handling code here:
-		try {
 
-			if (evt.getStateChange() == ItemEvent.SELECTED) {
-				//Recupera o cliente selecionado
-				Cliente cliente = (Cliente) comboCliente.getSelectedItem();
-				nome.setText(cliente.getNome());
-				cpf.setText(cliente.getCpf());
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            //Recupera o cliente selecionado
+            Cliente cliente = (Cliente) comboCliente.getSelectedItem();
+            nome.setText(cliente.getNome());
+            cpf.setText(cliente.getCpf());
 
-				rua.setText(cliente.getEndereco().getRua());
-				numero.setText(cliente.getEndereco().getNumero());
+            rua.setText(cliente.getEndereco().getRua());
+            numero.setText(cliente.getEndereco().getNumero());
 
-				//Habilitar o botão salvar para alteração
-				btSalvar.setEnabled(true);
-				btNovo.setEnabled(true);
+            //Habilitar o botão salvar para alteração
+            btSalvar.setEnabled(true);
+            btNovo.setEnabled(true);
 
-				novo = false;
-			}
-		} catch (Exception e) {
-			System.out.println("Erro ao carregar o combo Cliente");
-		}
+            novo = false;
+        }
     }//GEN-LAST:event_comboClienteItemStateChanged
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
@@ -417,7 +412,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JComboBox<String> comboCliente;
+    private javax.swing.JComboBox<Cliente> comboCliente;
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

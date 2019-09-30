@@ -44,7 +44,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 			senha.setText(user.getSenha());
 			btNovo.setEnabled(true);
 		} else {
-			comboUsuario.addItem(user.toString());
+			comboUsuario.addItem(user);
 			btNovo.setEnabled(false);
 			nivel.setEnabled(false);
 		}
@@ -66,8 +66,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        comboUsuario = new javax.swing.JComboBox<>();
-        nivel = new javax.swing.JComboBox<>();
+        comboUsuario = new javax.swing.JComboBox<Usuario>();
+        nivel = new javax.swing.JComboBox<String>();
         nome = new javax.swing.JTextField();
         login = new javax.swing.JTextField();
         senha = new javax.swing.JPasswordField();
@@ -100,7 +100,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Comúm" }));
+        nivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Comúm" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -252,7 +252,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
 		if (novo && isCampoNoVazio()) {
 			listaUsuarios.add(usuario);
-			comboUsuario.addItem(usuario.toString());
+			comboUsuario.addItem(usuario);
 			comboUsuario.setSelectedItem(usuario);
 			JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!");
 			dispose();
@@ -345,7 +345,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton Sair;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JComboBox<String> comboUsuario;
+    private javax.swing.JComboBox<Usuario> comboUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
