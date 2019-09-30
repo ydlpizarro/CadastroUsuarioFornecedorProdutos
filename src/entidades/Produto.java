@@ -65,6 +65,9 @@ public class Produto {
         this.codigoProduto = codigoProduto;
     }  
     
-    
+    @Override
+    public String toString(){
+        return nome;
+    }
     
 }

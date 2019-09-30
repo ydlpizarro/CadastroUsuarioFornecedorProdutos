@@ -12,10 +12,20 @@ package entidades;
 public class Fornecedor {
     private String nome;
     private Endereco endereco;
+    private int numero;
     private String cnpj;
     private Usuario usuario;
     private String tipoProduto;
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    
     public String getTipoProduto() {
         return tipoProduto;
     }
