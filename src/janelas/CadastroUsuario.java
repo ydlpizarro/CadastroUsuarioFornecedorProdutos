@@ -66,16 +66,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        comboUsuario = new javax.swing.JComboBox<Usuario>();
-        nivel = new javax.swing.JComboBox<String>();
+        comboUsuario = new javax.swing.JComboBox<>();
+        nivel = new javax.swing.JComboBox<>();
         nome = new javax.swing.JTextField();
         login = new javax.swing.JTextField();
         senha = new javax.swing.JPasswordField();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
-        Sair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados do Usuário"));
 
@@ -100,7 +99,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        nivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Comúm" }));
+        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Comúm" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,13 +174,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        Sair.setText("Sair");
-        Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SairActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,11 +185,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btNovo)
-                .addGap(18, 18, 18)
+                .addGap(94, 94, 94)
                 .addComponent(btSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(Sair)
-                .addGap(89, 89, 89))
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,8 +197,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar)
-                    .addComponent(btNovo)
-                    .addComponent(Sair))
+                    .addComponent(btNovo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -255,7 +244,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 			comboUsuario.addItem(usuario);
 			comboUsuario.setSelectedItem(usuario);
 			JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!");
-			dispose();
 		} else {
 			JOptionPane.showMessageDialog(null, "Não deixe campos vazios!!!");
 		}
@@ -301,11 +289,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 		}
     }//GEN-LAST:event_comboUsuarioItemStateChanged
 
-    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
-		// TODO add your handling code here:
-		dispose();
-    }//GEN-LAST:event_SairActionPerformed
-
 	/**
 	 * @param args the command line arguments
 	 */
@@ -342,7 +325,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Sair;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox<Usuario> comboUsuario;

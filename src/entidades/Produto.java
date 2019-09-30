@@ -11,7 +11,6 @@ package entidades;
  */
 public class Produto {
     private String nome;
-    private Fornecedor fornecedor;
     private int quantidade;
     private double valorUnitario;
     private String tipo;
@@ -25,15 +24,7 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
-    public int getQuantidade() {
+        public int getQuantidade() {
         return quantidade;
     }
 

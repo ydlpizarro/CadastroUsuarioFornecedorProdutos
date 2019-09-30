@@ -56,13 +56,15 @@ public class Principal extends javax.swing.JFrame {
         numero = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        comboCliente = new javax.swing.JComboBox<Cliente>();
+        comboCliente = new javax.swing.JComboBox<>();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         menuCadastrarUsuario = new javax.swing.JMenuItem();
+        menuCadastrarFornecedor = new javax.swing.JMenuItem();
+        menuCadastrarProduto = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -249,6 +251,22 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCadastrarUsuario);
 
+        menuCadastrarFornecedor.setText("Cadastro de Fornecedor");
+        menuCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastrarFornecedorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuCadastrarFornecedor);
+
+        menuCadastrarProduto.setText("Cadastro de Produto");
+        menuCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastrarProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuCadastrarProduto);
+
         menuSair.setMnemonic('s');
         menuSair.setText("Sair");
         menuSair.addActionListener(new java.awt.event.ActionListener() {
@@ -374,6 +392,16 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboClienteActionPerformed
 
+    private void menuCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarFornecedorActionPerformed
+        // TODO add your handling code here:
+        new CadastroFornecedor().setVisible(true);
+    }//GEN-LAST:event_menuCadastrarFornecedorActionPerformed
+
+    private void menuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutoActionPerformed
+        // TODO add your handling code here:
+        new CadastroProduto().setVisible(true);
+    }//GEN-LAST:event_menuCadastrarProdutoActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -427,6 +455,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem menuCadastrarFornecedor;
+    private javax.swing.JMenuItem menuCadastrarProduto;
     private javax.swing.JMenuItem menuCadastrarUsuario;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JTextField nome;
