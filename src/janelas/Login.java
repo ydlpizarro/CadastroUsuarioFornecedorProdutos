@@ -100,16 +100,18 @@ public class Login extends javax.swing.JFrame {
         user.setNome("Usuário Administrador Padrão");
         user.setLogin("teste");
         user.setSenha("teste");
+		user.setNivel(1);
         
         //Dados do usuário que está tentando logar no sistema
         Usuario local = new Usuario();
         local.setLogin(login.getText());
         local.setSenha(new String(senha.getPassword()));
-        
+		
+		
         //Verificação de login e senha
         if((user.getLogin().equals(local.getLogin()))&&
                 (user.getSenha().equals(local.getSenha()))){
-            new Principal(user).setVisible(true);
+			new Principal(user).setVisible(true);
             dispose();
         }else{
             msg.setText("Usuário ou senha inválidos!!!");

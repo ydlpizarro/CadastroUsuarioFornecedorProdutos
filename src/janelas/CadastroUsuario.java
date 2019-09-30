@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,13 +23,19 @@ public class CadastroUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CadastroUsuario
      */
-    public CadastroUsuario() {
+	
+	public CadastroUsuario(){
+		CadastroUsuario cadastroUsuario = new CadastroUsuario(listaUsuarios,user);
+	}
+	
+    public CadastroUsuario(LinkedList listaUsuarios, Usuario user) {
         initComponents();
         this.listaUsuarios = listaUsuarios;
         this.user = user;
         
+		
         //Verifica se é administrador "1"
-        if(user.getNivel() == 1){
+  		if(user.getNivel() == 1){
             comboUsuario.setModel(new DefaultComboBoxModel(listaUsuarios.toArray()));
             btNovo.setEnabled(true);
         }else{
@@ -38,10 +45,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         login.setEnabled(false);
         comboUsuario.setSelectedItem(user);
-    }
-
-    CadastroUsuario(LinkedList<Usuario> listaUsuario, Usuario user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -239,6 +242,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             comboUsuario.addItem(usuario.toString());
             comboUsuario.setSelectedItem(usuario);
         }
+		
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void comboUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboUsuarioItemStateChanged

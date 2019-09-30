@@ -28,10 +28,12 @@ public class Principal extends javax.swing.JFrame {
         listaUsuario.add(user);
         btSalvar.setEnabled(false);
     }
-
-    private Principal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	
+	public Principal(){
+		Principal principal = new Principal(user);
+	}
+	
+	
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -356,6 +358,7 @@ public class Principal extends javax.swing.JFrame {
     private void menuCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarUsuarioActionPerformed
         // TODO add your handling code here:
         new CadastroUsuario(listaUsuario,user).setVisible(true);
+		
     }//GEN-LAST:event_menuCadastrarUsuarioActionPerformed
 
     /**
