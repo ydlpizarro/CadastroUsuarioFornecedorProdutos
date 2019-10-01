@@ -65,11 +65,11 @@ public class Principal extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuCadastrarUsuario = new javax.swing.JMenuItem();
         menuCadastrarFornecedor = new javax.swing.JMenuItem();
         menuCadastrarProduto = new javax.swing.JMenuItem();
-        menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,6 +241,16 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setMnemonic('a');
         jMenu1.setText("Arquivo");
+
+        menuSair.setMnemonic('s');
+        menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuSair);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setMnemonic('c');
@@ -270,15 +280,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menuCadastrarProduto);
-
-        menuSair.setMnemonic('s');
-        menuSair.setText("Sair");
-        menuSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSairActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuSair);
 
         jMenuBar1.add(jMenu2);
 
