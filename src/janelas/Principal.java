@@ -265,6 +265,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCadastrarUsuario);
 
+        menuCadastrarFornecedor.setMnemonic('f');
         menuCadastrarFornecedor.setText("Cadastro de Fornecedor");
         menuCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +274,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCadastrarFornecedor);
 
+        menuCadastrarProduto.setMnemonic('p');
         menuCadastrarProduto.setText("Cadastro de Produto");
         menuCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

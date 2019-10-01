@@ -38,6 +38,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuCadastrarFornecedor">
               <Properties>
+                <Property name="mnemonic" type="int" value="102"/>
                 <Property name="text" type="java.lang.String" value="Cadastro de Fornecedor"/>
               </Properties>
               <Events>
@@ -46,6 +47,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuCadastrarProduto">
               <Properties>
+                <Property name="mnemonic" type="int" value="112"/>
                 <Property name="text" type="java.lang.String" value="Cadastro de Produto"/>
               </Properties>
               <Events>
