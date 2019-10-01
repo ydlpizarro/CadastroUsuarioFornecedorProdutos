@@ -15,6 +15,16 @@ public class Produto {
     private double valorUnitario;
     private String tipo;
     private String codigoProduto;
+    private String fornecedores;
+
+    public String getFornecedores() {
+        return fornecedores;
+    }
+
+    public void setFornecedores(String fornecedores) {
+        this.fornecedores = fornecedores;
+    }
+    
 
     public String getNome() {
         return nome;

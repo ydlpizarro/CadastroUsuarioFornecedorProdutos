@@ -6,6 +6,7 @@
 package janelas;
 
 import entidades.*;
+import java.awt.event.ItemEvent;
 import java.util.LinkedList;
 
 /**
@@ -14,9 +15,9 @@ import java.util.LinkedList;
  */
 public class CadastroProduto extends javax.swing.JFrame {
     
-    private LinkedList<Produto> listaProdutos = new LinkedList<>();
-    private LinkedList<Usuario> listaUsuario = new LinkedList<>();
-    private LinkedList<Fornecedor> listaFornecedor = new LinkedList<>();
+    private LinkedList<Produto> listaProdutos;
+    private LinkedList<Usuario> listaUsuario;
+    private LinkedList<Fornecedor> listaFornecedor;
     
     private Usuario user;
     private boolean novo = false;
@@ -26,14 +27,15 @@ public class CadastroProduto extends javax.swing.JFrame {
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
-        CadastroProduto cadastroProduto= new CadastroProduto(user);
+        CadastroProduto cadastroProduto= new CadastroProduto(listaProdutos,user);
     }
     
-    public CadastroProduto(Usuario user){
+    public CadastroProduto(LinkedList<Produto> listaProdutos, Usuario user){
         initComponents();
+        this.listaProdutos = listaProdutos;
         this.user = user;
-        
-        
+        listaUsuario.add(user);
+        btSalvar.setEnabled(false);
     }
 
     /**
@@ -57,12 +59,12 @@ public class CadastroProduto extends javax.swing.JFrame {
         tipo = new javax.swing.JTextField();
         nomeFornecedores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        comboCodigo = new javax.swing.JComboBox<>();
+        comboProduto = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,11 +83,13 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         nome.setToolTipText("");
 
+        nomeFornecedores.setEnabled(false);
+
         jLabel7.setText("Código:");
 
-        comboCodigo.addItemListener(new java.awt.event.ItemListener() {
+        comboProduto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboCodigoItemStateChanged(evt);
+                comboProdutoItemStateChanged(evt);
             }
         });
 
@@ -116,7 +120,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(quantidade)
                                     .addComponent(nome)
-                                    .addComponent(comboCodigo, 0, 230, Short.MAX_VALUE)))
+                                    .addComponent(comboProduto, 0, 230, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -138,7 +142,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(comboCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,14 +172,19 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Novo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btNovoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Salvar");
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,9 +196,9 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(jButton1)
+                .addComponent(btNovo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btSalvar)
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -199,8 +208,8 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btNovo)
+                    .addComponent(btSalvar))
                 .addContainerGap())
         );
 
@@ -211,16 +220,64 @@ public class CadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_codigoActionPerformed
 
-    private void comboCodigoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCodigoItemStateChanged
+    private void comboProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProdutoItemStateChanged
         // TODO add your handling code here:
         
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            Produto produto = (Produto) comboProduto.getSelectedItem();
+            nome.setText(produto.getNome());
+            quantidade.setText(""+produto.getQuantidade());
+            valorUnitario.setText(""+produto.getValorUnitario());
+            tipo.setText(produto.getTipo());
+            nomeFornecedores.setText(produto.getFornecedores());
+            codigo.setText(produto.getCodigoProduto());
+        }
         
         
-    }//GEN-LAST:event_comboCodigoItemStateChanged
+    }//GEN-LAST:event_comboProdutoItemStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        novo = true;
+        btSalvar.setEnabled(true);
+        btNovo.setEnabled(false);
+    }//GEN-LAST:event_btNovoActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        // TODO add your handling code here:
+        Produto produto = null;
+        
+        if(novo){
+            produto = new Produto();
+            
+        }else{
+            produto = (Produto) comboProduto.getSelectedItem();
+            
+        }
+        
+        produto.setNome(nome.getText());
+        produto.setQuantidade(Integer.parseInt(quantidade.getText()));
+        produto.setTipo(tipo.getText());
+        produto.setCodigoProduto(codigo.getText());
+        produto.setValorUnitario(Double.parseDouble(valorUnitario.getText()));
+        
+        String textoFornecedor="";
+        for (Fornecedor fornecedor : listaFornecedor) {
+            if(fornecedor.getTipoProduto().equals(produto.getTipo())){
+                textoFornecedor=textoFornecedor+fornecedor.getNome()+", ";
+            }
+        }
+        nomeFornecedores.setText(textoFornecedor);
+        produto.setFornecedores(textoFornecedor);
+        if(novo){
+            listaProdutos.add(produto);
+            comboProduto.addItem(produto);
+            comboProduto.setSelectedItem(produto);
+        }
+        
+        btNovo.setEnabled(true);
+        
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,10 +315,10 @@ public class CadastroProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btNovo;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JTextField codigo;
-    private javax.swing.JComboBox<Produto> comboCodigo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<Produto> comboProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

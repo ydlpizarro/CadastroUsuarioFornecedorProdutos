@@ -18,7 +18,10 @@ public class Principal extends javax.swing.JFrame {
 
 	private LinkedList<Cliente> listaClientes = new LinkedList<>();
 	private LinkedList<Usuario> listaUsuario = new LinkedList<>();
-	private Usuario user;
+	private LinkedList<Produto> listaProdutos = new LinkedList<>();
+        private LinkedList<Fornecedor> listaFornecedores = new LinkedList<>();
+        private Usuario user;
+        private Fornecedor fornecedor;
 	private boolean novo = false;
 
 	/**
@@ -394,12 +397,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void menuCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarFornecedorActionPerformed
         // TODO add your handling code here:
-        new CadastroFornecedor(user).setVisible(true);
+        new CadastroFornecedor(listaFornecedores, fornecedor).setVisible(true);
     }//GEN-LAST:event_menuCadastrarFornecedorActionPerformed
 
     private void menuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutoActionPerformed
         // TODO add your handling code here:
-        new CadastroProduto(user).setVisible(true);
+        new CadastroProduto(listaProdutos,user).setVisible(true);
     }//GEN-LAST:event_menuCadastrarProdutoActionPerformed
 
 	/**

@@ -8,6 +8,7 @@ package janelas;
 import entidades.*;
 import java.awt.event.ItemEvent;
 import java.util.LinkedList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -15,9 +16,10 @@ import java.util.LinkedList;
  */
 public class CadastroFornecedor extends javax.swing.JFrame {
     
-    private LinkedList<Fornecedor> listaFornecedores = new LinkedList<>();
-    private LinkedList<Usuario> listaUsuario = new LinkedList<>();
+    private LinkedList<Fornecedor> listaFornecedores;
+    private LinkedList<Usuario> listaUsuario;
     
+    private Fornecedor fornecedor;
     private Usuario user;
     private boolean novo = false;
     /**
@@ -25,14 +27,19 @@ public class CadastroFornecedor extends javax.swing.JFrame {
      */
     
     public CadastroFornecedor(){
-        CadastroFornecedor cadastroFornecedor = new CadastroFornecedor(user);
+        CadastroFornecedor cadastroFornecedor = new CadastroFornecedor(listaFornecedores,fornecedor);
     }
     
     
-    public CadastroFornecedor(Usuario user) {
+    public CadastroFornecedor(LinkedList listaFornecedores, Fornecedor fornecedor) {
         initComponents();
-        this.user=user;
-        listaUsuario.add(user);
+        this.listaFornecedores = listaFornecedores;
+        this.fornecedor=fornecedor;
+        comboFornecedor.setModel(new DefaultComboBoxModel(listaFornecedores.toArray()));
+        comboFornecedor.setSelectedItem(fornecedor);
+        //listaFornecedores.add(fornecedor);
+        
+                
         btSalvar.setEnabled(false);        
     }
 
@@ -240,6 +247,8 @@ public class CadastroFornecedor extends javax.swing.JFrame {
             
             rua.setText(fornecedor.getEndereco().getRua());
             numero.setText(fornecedor.getEndereco().getNumero());
+            
+            area.setText(fornecedor.getTipoProduto());
             
             btSalvar.setEnabled(true);
             btNovo.setEnabled(true);
