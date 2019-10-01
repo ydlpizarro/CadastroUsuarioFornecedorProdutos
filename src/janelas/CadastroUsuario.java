@@ -28,7 +28,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 	 */
 
 	public CadastroUsuario() {
-		CadastroUsuario cadastroUsuario = new CadastroUsuario(listaUsuarios, user);
+		new CadastroUsuario(listaUsuarios, user);
 	}
 
 	public CadastroUsuario(LinkedList listaUsuarios, Usuario user) {
@@ -243,6 +243,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
 			listaUsuarios.add(usuario);
 			comboUsuario.addItem(usuario);
 			comboUsuario.setSelectedItem(usuario);
+			btSalvar.setEnabled(false);
+			btNovo.setEnabled(true);
 			JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Não deixe campos vazios!!!");

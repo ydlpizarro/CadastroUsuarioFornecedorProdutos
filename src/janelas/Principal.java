@@ -19,9 +19,10 @@ public class Principal extends javax.swing.JFrame {
 	private LinkedList<Cliente> listaClientes = new LinkedList<>();
 	private LinkedList<Usuario> listaUsuario = new LinkedList<>();
 	private LinkedList<Produto> listaProdutos = new LinkedList<>();
-        private LinkedList<Fornecedor> listaFornecedores = new LinkedList<>();
-        private Usuario user;
-        private Fornecedor fornecedor;
+	private LinkedList<Fornecedor> listaFornecedores = new LinkedList<>();
+	private Usuario user;
+	private Fornecedor fornecedor;
+	private Produto produto;
 	private boolean novo = false;
 
 	/**
@@ -35,7 +36,7 @@ public class Principal extends javax.swing.JFrame {
 	}
 
 	public Principal() {
-		Principal principal = new Principal(user);
+		new Principal(user);
 	}
 
 	/**
@@ -354,29 +355,29 @@ public class Principal extends javax.swing.JFrame {
 
 			//Selecionar o item
 			comboCliente.setSelectedItem(cliente);
-			JOptionPane.showMessageDialog(null, "Cadastro com sucesso !!");
-			
+			JOptionPane.showMessageDialog(null, "Cadastro do Cliente com sucesso !!");
+
 		}
 		btNovo.setEnabled(true);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void comboClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboClienteItemStateChanged
 
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            //Recupera o cliente selecionado
-            Cliente cliente = (Cliente) comboCliente.getSelectedItem();
-            nome.setText(cliente.getNome());
-            cpf.setText(cliente.getCpf());
+		if (evt.getStateChange() == ItemEvent.SELECTED) {
+			//Recupera o cliente selecionado
+			Cliente cliente = (Cliente) comboCliente.getSelectedItem();
+			nome.setText(cliente.getNome());
+			cpf.setText(cliente.getCpf());
 
-            rua.setText(cliente.getEndereco().getRua());
-            numero.setText(cliente.getEndereco().getNumero());
+			rua.setText(cliente.getEndereco().getRua());
+			numero.setText(cliente.getEndereco().getNumero());
 
-            //Habilitar o botão salvar para alteração
-            btSalvar.setEnabled(true);
-            btNovo.setEnabled(true);
+			//Habilitar o botão salvar para alteração
+			btSalvar.setEnabled(true);
+			btNovo.setEnabled(true);
 
-            novo = false;
-        }
+			novo = false;
+		}
     }//GEN-LAST:event_comboClienteItemStateChanged
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
@@ -392,17 +393,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCadastrarUsuarioActionPerformed
 
     private void comboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClienteActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_comboClienteActionPerformed
 
     private void menuCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarFornecedorActionPerformed
-        // TODO add your handling code here:
-        new CadastroFornecedor(listaFornecedores, fornecedor).setVisible(true);
+		// TODO add your handling code here:
+		new CadastroFornecedor(listaFornecedores, fornecedor).setVisible(true);
     }//GEN-LAST:event_menuCadastrarFornecedorActionPerformed
 
     private void menuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutoActionPerformed
-        // TODO add your handling code here:
-        new CadastroProduto(listaProdutos,user).setVisible(true);
+		// TODO add your handling code here:
+		new CadastroProduto(listaFornecedores,listaProdutos,produto).setVisible(true);
     }//GEN-LAST:event_menuCadastrarProdutoActionPerformed
 
 	/**

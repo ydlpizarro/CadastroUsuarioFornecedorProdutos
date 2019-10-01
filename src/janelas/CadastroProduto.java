@@ -8,6 +8,8 @@ package janelas;
 import entidades.*;
 import java.awt.event.ItemEvent;
 import java.util.LinkedList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,10 +18,9 @@ import java.util.LinkedList;
 public class CadastroProduto extends javax.swing.JFrame {
     
     private LinkedList<Produto> listaProdutos;
-    private LinkedList<Usuario> listaUsuario;
     private LinkedList<Fornecedor> listaFornecedor;
     
-    private Usuario user;
+	private Produto produto;
     private boolean novo = false;
     
 
@@ -27,15 +28,18 @@ public class CadastroProduto extends javax.swing.JFrame {
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
-        CadastroProduto cadastroProduto= new CadastroProduto(listaProdutos,user);
+        new CadastroProduto(listaFornecedor,listaProdutos,produto);
     }
     
-    public CadastroProduto(LinkedList<Produto> listaProdutos, Usuario user){
+    public CadastroProduto(LinkedList listaFornecedor, LinkedList listaProdutos, Produto produto){
         initComponents();
         this.listaProdutos = listaProdutos;
-        this.user = user;
-        listaUsuario.add(user);
-        btSalvar.setEnabled(false);
+		this.listaFornecedor=listaFornecedor;
+        this.produto = produto;
+		comboProduto.setModel(new DefaultComboBoxModel(listaProdutos.toArray()));
+		
+
+		btSalvar.setEnabled(false);
     }
 
     /**
@@ -55,7 +59,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
         quantidade = new javax.swing.JTextField();
-        valorUnitario = new javax.swing.JTextField();
         tipo = new javax.swing.JTextField();
         nomeFornecedores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -63,10 +66,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
+        valorUnitario = new javax.swing.JTextField();
         btNovo = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Produto"));
 
@@ -116,11 +120,11 @@ public class CadastroProduto extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel7))
-                                .addGap(32, 32, 32)
+                                .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(quantidade)
-                                    .addComponent(nome)
-                                    .addComponent(comboProduto, 0, 230, Short.MAX_VALUE)))
+                                    .addComponent(comboProduto, 0, 232, Short.MAX_VALUE)
+                                    .addComponent(quantidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -129,10 +133,10 @@ public class CadastroProduto extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(valorUnitario)
                                     .addComponent(tipo)
                                     .addComponent(nomeFornecedores)
-                                    .addComponent(codigo))))
+                                    .addComponent(codigo)
+                                    .addComponent(valorUnitario))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -241,6 +245,12 @@ public class CadastroProduto extends javax.swing.JFrame {
         novo = true;
         btSalvar.setEnabled(true);
         btNovo.setEnabled(false);
+		nome.setText("");
+		quantidade.setText("");
+		tipo.setText("");
+		nomeFornecedores.setText("");
+		codigo.setText("");
+		valorUnitario.setText("");
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -273,6 +283,7 @@ public class CadastroProduto extends javax.swing.JFrame {
             listaProdutos.add(produto);
             comboProduto.addItem(produto);
             comboProduto.setSelectedItem(produto);
+			JOptionPane.showMessageDialog(null, "Cadastro do Produto com sucesso!!");
         }
         
         btNovo.setEnabled(true);

@@ -9,6 +9,7 @@ import entidades.*;
 import java.awt.event.ItemEvent;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +28,7 @@ public class CadastroFornecedor extends javax.swing.JFrame {
      */
     
     public CadastroFornecedor(){
-        CadastroFornecedor cadastroFornecedor = new CadastroFornecedor(listaFornecedores,fornecedor);
+        new CadastroFornecedor(listaFornecedores,fornecedor);
     }
     
     
@@ -38,8 +39,7 @@ public class CadastroFornecedor extends javax.swing.JFrame {
         comboFornecedor.setModel(new DefaultComboBoxModel(listaFornecedores.toArray()));
         comboFornecedor.setSelectedItem(fornecedor);
         //listaFornecedores.add(fornecedor);
-        
-                
+		                
         btSalvar.setEnabled(false);        
     }
 
@@ -230,6 +230,7 @@ public class CadastroFornecedor extends javax.swing.JFrame {
             listaFornecedores.add(fornecedor);
             comboFornecedor.addItem(fornecedor);
             comboFornecedor.setSelectedItem(fornecedor);
+			JOptionPane.showMessageDialog(null, "Cadastro do Fornecedor com sucesso!!");
             
         }
         
