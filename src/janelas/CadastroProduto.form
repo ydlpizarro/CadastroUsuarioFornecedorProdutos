@@ -95,7 +95,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="valorUnitario" max="32767" attributes="0"/>
                                       <Component id="tipo" max="32767" attributes="0"/>
-                                      <Component id="Fornecedor" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="nomeFornecedores" alignment="0" max="32767" attributes="0"/>
                                       <Component id="codigo" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -140,7 +140,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Fornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomeFornecedores" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -190,7 +190,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tipo">
         </Component>
-        <Component class="javax.swing.JTextField" name="Fornecedor">
+        <Component class="javax.swing.JTextField" name="nomeFornecedores">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -228,6 +228,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

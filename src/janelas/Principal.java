@@ -394,12 +394,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void menuCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarFornecedorActionPerformed
         // TODO add your handling code here:
-        new CadastroFornecedor().setVisible(true);
+        new CadastroFornecedor(user).setVisible(true);
     }//GEN-LAST:event_menuCadastrarFornecedorActionPerformed
 
     private void menuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProdutoActionPerformed
         // TODO add your handling code here:
-        new CadastroProduto().setVisible(true);
+        new CadastroProduto(user).setVisible(true);
     }//GEN-LAST:event_menuCadastrarProdutoActionPerformed
 
 	/**

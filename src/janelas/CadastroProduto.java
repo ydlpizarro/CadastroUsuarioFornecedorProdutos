@@ -5,23 +5,34 @@
  */
 package janelas;
 
-import entidades.Usuario;
+import entidades.*;
+import java.util.LinkedList;
 
 /**
  *
- * @author lab01a
+ * @author Gonosuke
  */
 public class CadastroProduto extends javax.swing.JFrame {
+    
+    private LinkedList<Produto> listaProdutos = new LinkedList<>();
+    private LinkedList<Usuario> listaUsuario = new LinkedList<>();
+    private LinkedList<Fornecedor> listaFornecedor = new LinkedList<>();
+    
+    private Usuario user;
+    private boolean novo = false;
+    
 
     /**
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
-        initComponents();
-        
+        CadastroProduto cadastroProduto= new CadastroProduto(user);
     }
     
     public CadastroProduto(Usuario user){
+        initComponents();
+        this.user = user;
+        
         
     }
 
@@ -44,7 +55,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         quantidade = new javax.swing.JTextField();
         valorUnitario = new javax.swing.JTextField();
         tipo = new javax.swing.JTextField();
-        Fornecedor = new javax.swing.JTextField();
+        nomeFornecedores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         comboCodigo = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
@@ -116,7 +127,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(valorUnitario)
                                     .addComponent(tipo)
-                                    .addComponent(Fornecedor)
+                                    .addComponent(nomeFornecedores)
                                     .addComponent(codigo))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -149,7 +160,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Fornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -158,6 +169,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         );
 
         jButton1.setText("Novo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salvar");
 
@@ -202,6 +218,10 @@ public class CadastroProduto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_comboCodigoItemStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,7 +258,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Fornecedor;
     private javax.swing.JTextField codigo;
     private javax.swing.JComboBox<Produto> comboCodigo;
     private javax.swing.JButton jButton1;
@@ -253,6 +272,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField nomeFornecedores;
     private javax.swing.JTextField quantidade;
     private javax.swing.JTextField tipo;
     private javax.swing.JTextField valorUnitario;

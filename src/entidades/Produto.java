@@ -58,7 +58,7 @@ public class Produto {
     
     @Override
     public String toString(){
-        return nome;
+        return codigoProduto;
     }
     
 }
