@@ -5,9 +5,11 @@
  */
 package janelas;
 
+import controle.Controlador;
 import java.util.LinkedList;
 import entidades.*;
 import java.awt.event.ItemEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,19 +26,23 @@ public class Principal extends javax.swing.JFrame {
 	private Fornecedor fornecedor;
 	private Produto produto;
 	private boolean novo = false;
+        private Controlador con = new Controlador();
 
 	/**
 	 * Creates new form Principal
 	 */
 	public Principal(Usuario user) {
-		initComponents();
-		this.user = user;
-		listaUsuario.add(user);
-		btSalvar.setEnabled(false);
+            initComponents();
+            this.user = user;
+            listaUsuario.add(user);
+            btSalvar.setEnabled(false);
+            
+            listaClientes.addAll(con.consultarTodosClientes());
+            comboCliente.setModel(new DefaultComboBoxModel(listaClientes.toArray()));
 	}
 
 	public Principal() {
-		new Principal(user);
+            new Principal(user);
 	}
 
 	/**
@@ -358,6 +364,9 @@ public class Principal extends javax.swing.JFrame {
 
 			//Selecionar o item
 			comboCliente.setSelectedItem(cliente);
+                        
+                        con.salvarCliente(cliente);
+                        
 			JOptionPane.showMessageDialog(null, "Cadastro do Cliente com sucesso !!");
 
 		}

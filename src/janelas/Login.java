@@ -5,6 +5,7 @@
  */
 package janelas;
 
+import controle.Controlador;
 import entidades.Usuario;
 
 /**
@@ -12,6 +13,8 @@ import entidades.Usuario;
  * @author Gonosuke
  */
 public class Login extends javax.swing.JFrame {
+    
+    private Controlador con = new Controlador();
 
     /**
      * Creates new form Login
@@ -96,28 +99,18 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Usuário padrão
         //Este trecho de código tem que ser trocado por uma consulta em BD
-        Usuario user = new Usuario();
-        user.setNome("Usuário Administrador Padrão");
-        user.setLogin("teste");
-        user.setSenha("teste");
-		user.setNivel(1);
-        
-        //Dados do usuário que está tentando logar no sistema
         Usuario local = new Usuario();
         local.setLogin(login.getText());
         local.setSenha(new String(senha.getPassword()));
-		
-		
-        //Verificação de login e senha
-        if((user.getLogin().equals(local.getLogin()))&&
-                (user.getSenha().equals(local.getSenha()))){
-			new Principal(user).setVisible(true);
+        
+        Usuario user = con.validaUsuario(local);
+        
+        if (user != null) {
+            new Principal(user).setVisible(true);
             dispose();
-        }else{
+        } else {
             msg.setText("Usuário ou senha inválidos!!!");
         }
-        
-        
     }//GEN-LAST:event_btEntrarActionPerformed
 
     /**
