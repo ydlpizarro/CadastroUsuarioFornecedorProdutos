@@ -14,6 +14,15 @@ public class Usuario {
     private String login;
     private String senha;
     private int nivel; // 1 - Administrador   2 - Comum
+    private int idUsuario;
+    
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+    
+    public void setIdUsuario(int id) {
+        idUsuario = id;
+    }
 
     public String getNome() {
         return nome;

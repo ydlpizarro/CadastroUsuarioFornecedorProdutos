@@ -12,6 +12,15 @@ package entidades;
 public class Endereco {
     private String rua;
     private String numero;
+    private int idEndereco;
+    
+    public int getIdEndereco() {
+        return idEndereco;
+    }
+    
+    public void setIdEndereco(int id) {
+        idEndereco = id;
+    }
 
     public String getRua() {
         return rua;

@@ -14,6 +14,15 @@ public class Cliente {
     private String cpf;
     private Endereco endereco;
     private Usuario usuario;
+    public int idCliente;
+    
+    public int getIdCliente() {
+        return idCliente;
+    }
+    
+    public void setIdCliente(int id) {
+        idCliente = id;
+    }
 
     public String getNome() {
         return nome;
