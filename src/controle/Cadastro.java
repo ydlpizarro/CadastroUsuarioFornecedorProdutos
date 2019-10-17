@@ -56,7 +56,7 @@ public class Cadastro {
         int i = 1;
         
         try {
-            st = con.getConexao().prepareStatement("select idUsuario, nome, login, senha, nivel from usuario where id = ?");
+            st = con.getConexao().prepareStatement("select idUsuario, nome, login, senha, nivel from usuario where idUsuario = ?");
             st.setInt(i++, id);
             rs = st.executeQuery();
             
@@ -69,6 +69,7 @@ public class Cadastro {
                 usuario.setSenha(rs.getString("senha"));
                 
             }
+            
         } catch(SQLException ex) {
             Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
